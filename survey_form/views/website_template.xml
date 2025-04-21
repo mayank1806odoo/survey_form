@@ -1,0 +1,59 @@
+<odoo>
+    <template id="survey_form_template" name="Survey Form">
+        <t t-call="website.layout">
+            <div class="container py-5">
+                <h3 class="mb-4">Survey Form</h3>
+                <t t-if="submitted">
+                    <div class="alert alert-success">
+                        <i class="fa fa-thumbs-up"/> Thank you! Your form was submitted successfully.
+                    </div>
+                    <a class="btn btn-secondary mt-2" href="/survey">Submit another response</a>
+                </t>
+                <t t-else="">
+                    <form action="/survey_form" method="POST">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" required="1" class="form-control"/>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" required="1" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phone">Phone</label>
+                                <input type="text" name="phone" id="phone" required="1" class="form-control"/>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="dob">DOB</label>
+                                <input type="date" name="dob" id="dob" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="qualification">Qualification</label>
+                                <select name="qualification" id="qualification" class="form-control">
+                                    <option value="">Select</option>
+                                    <option value="pg">Post Graduation</option>
+                                    <option value="ug">Graduation</option>
+                                    <option value="higher_secondary">Higher Secondary</option>
+                                    <option value="secondary">Secondary</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary px-4">Submit</button>
+                        </div>
+                    </form>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,8 @@
+<odoo>
+    <record id="website_survey_menu" model="website.menu">
+        <field name="name">Survey</field>
+        <field name="url">/survey</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">90</field>
+    </record>
+</odoo>
